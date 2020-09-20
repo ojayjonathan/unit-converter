@@ -1,0 +1,12 @@
+* {
+    margin:0;
+}
+.App >.top{
+    min-height: 100vh;
+}
+.App{
+    position: relative;
+}
+.pt-1{
+    padding-top: 1rem;
+}

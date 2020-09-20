@@ -1,0 +1,21 @@
+{
+  "short_name": "Convertor",
+  "name": "Unit Convertor",
+  "icons": [
+    {
+      "src": "exchange.ico",
+      "sizes": "64x64 32x32 40x40 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "exchange.svg",
+      "type": "image/svg",
+      "sizes": "173x198"
+    }
+    
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

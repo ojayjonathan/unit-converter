@@ -1,0 +1,45 @@
+{
+    "length": [
+        {"name":"Milimetre","unit":"mm","weights":0.001
+        },
+        {"name":"Metre","unit":"m","weights": 1
+        },
+        {"name":"Decametre","unit":"dm","weights": 0.1
+        },
+        {"name":"Centimetre","unit":"cm","weights": 0.01
+        },
+        {"name":"Kilometre","unit":"km","weights": 1000
+        },
+        {"name":"Mile","unit":"mi","weights": 1609.349937
+        },
+        {"name":"Yard","unit":"yd","weights": 0.9144
+        },
+        {"name":"Inch","unit":"in","weights": 0.0254
+        },
+        {"name":"Nanometre","unit":"nm","weights": 0.000000001
+        },
+        {"name":"Foot","unit":"ft","weights": 0.3048
+        }
+        
+    ],
+
+    "weight": [
+        {"name":"kilogram","unit":"kg","weights": 10
+        },
+        {"name":"miligram","unit":"mg","weights": 100
+        },
+        {"name":"gram","unit":"g","weights": 1000
+        },
+        {"name":"tone","unit":"tone","weights": 10000
+        }
+    ],
+    "temperature":[
+        {"name":"Kelvin","unit":"K","weights": 1
+        },
+        {"name":"Fahrenherit","unit":"°F","weights": -0.002184026034
+
+        },
+        {"name":"Celsius","unit":"°C","weights": -0.00367444424
+        }
+    ]
+}

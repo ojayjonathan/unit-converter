@@ -1,0 +1,113 @@
+
+.navbar{
+    width: 100vw;
+    background: #2A9D8F;;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    
+}
+.navbar>h1{
+    text-align: center;
+    flex: 1;
+    font-size: 50px;
+    color: #ffffff;
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-shadow: 0px 0px 0 rgb(243,243,243),
+                 1px 0px 0 rgb(230,230,230),
+                 2px 0px 0 rgb(218,218,218),
+                 3px 0px 0 rgb(205,205,205),
+                 4px 0px  0 rgb(193,193,193),
+                 5px 0px 4px rgba(0,0,0,0.65),
+                 5px 0px 1px rgba(0,0,0,0.5),
+                 0px 0px 4px rgba(0,0,0,.2);
+ }
+.navbar>img{
+    width: 60px;
+}
+@media (max-width:500px){
+    .navbar>h1{
+        font-size: 40px;
+    }
+    .navbar>img{
+        width: 50px;
+    }
+}
+.navbar>img:hover{
+    transform: scale(1.05);
+}
+h1>a, h1>a:active, h1>a:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+.navbar__toggle{
+    width: 300px;
+    background-color: #333;
+    z-index: 2;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+    text-align: start;
+    min-height: 300px;
+    position: absolute;
+    display: none;
+}
+.navbar__toggle a{
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    display: block;
+    padding: 1rem 0 1rem 2rem;
+    font-size: 16px;
+    font-weight: bold;
+    
+}
+.navbar__toggle ul{
+    list-style: none;
+    padding:0px;
+    
+}
+
+.navbar__toggle ul>li{
+    border-bottom: 1px solid #636262;
+}
+.navbar__toggle a:hover, .navbar__toggle a:active{
+    background-color:#2A9D8F ;
+}
+.navOpen{
+    background-image: url(./menu.svg);
+    background-color: transparent;
+    background-position: cover;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 60px;
+    height: 60px;
+    border: none;
+    transition: tranform .3s ease;
+    padding: 0px;
+}
+.navOpen:hover,.navOpen:active{
+    transform: scale(1.07);
+}
+.nav-active{
+    display: block;
+    animation: slideIn 1s;
+    transition: all .3s ease-in;
+}
+.navClose{
+    background-color: transparent;
+    color: white;
+    outline-width: 0;
+    font-size: 2.5rem;
+    border: none;
+    position:absolute;
+    right: 20px;
+    top:10px;
+}
+@keyframes slideIn{
+  0%{
+    left:-300px;
+  }
+  100%{
+      left:0px
+  }
+}
