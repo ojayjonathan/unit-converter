@@ -93,6 +93,7 @@ function Home({match}) {
             document.querySelector('title').innerHTML = titles[match.params.name]
            }}
     })       
+    
     return (
         <div className="home">
             <h1 id="title">Weight Conversion</h1>

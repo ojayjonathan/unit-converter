@@ -7,9 +7,69 @@
     margin-top: .5rem;
     box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
     padding: .3rem;
-    align-items: center;
+    display: flex;
     border-radius: 10px;
 }
-.currencyConvertor{
-    min-height: 80vh;
+.flag-select:hover{
+    border: 2px solid #9ed5ea;
 }
+
+.flag-select__btn{
+    display: flex !important;
+    align-items: center !important;
+    width: 100%;
+    justify-content: space-between !important;
+    outline-width: 0;
+}
+.d-flex{
+    display: flex;
+    flex-direction: column;
+    
+}
+.d-flex-row{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.currencyConvertor .input{
+    width: 250px !important;
+}
+.muted{
+    font-size: 12px;
+    color: gray;
+}
+.c_label{
+    display: flex;
+    justify-content: space-between;
+}
+.mt-2{
+    margin-top: 2rem !important;
+}
+@media (max-width:619.98px){
+    .d-flex-row{
+        flex-direction: column;
+        justify-content: unset;
+        
+    }
+    .d-flex{
+        margin:0 auto 0 auto;
+    }
+    .mt-2{
+        margin-top: 1rem !important;
+    }
+    .conversionSection{
+        margin-top:1rem !important;
+    }
+    
+}
+.flag-select__option {
+    white-space: pre-wrap !important;
+}
+.flag-select__options{
+    max-height: 400px !important;
+}
+
+
+
+.flag-select__option.flag-select__option--placeholder {
+    width:unset}

@@ -60,7 +60,8 @@ label {
 .conversionResult {
     text-align: center;
     padding-top: 1.5rem;
-    min-height: 30px;
+    min-height: 20px;
+    min-width: 300px;
 }
 #convMetric{
     text-align: center;
