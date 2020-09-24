@@ -24,14 +24,25 @@
     ],
 
     "weight": [
-        {"name":"kilogram","unit":"kg","weights": 10
+        {"name":"Kilogram","unit":"kg","weights": 1
         },
-        {"name":"miligram","unit":"mg","weights": 100
+        {"name":"Miligram","unit":"mg","weights": 0.000001
         },
-        {"name":"gram","unit":"g","weights": 1000
+        {"name":"Gram","unit":"g","weights": 0.001
         },
-        {"name":"tone","unit":"tone","weights": 10000
+        {"name":"Once","unit":"oz","weights": 0.0283495
+        },
+        {"name":"Pound","unit":"lb","weights": 0.453592
+        },
+        {"name":"Long Ton","unit":"t(tong)","weights": 1016.046111
+        },
+        {"name":"Short Ton","unit":"t(short)","weights": 0.0011023122
+        },
+        {"name":"Metric","unit":"t","weights": 1000
+        },
+        {"name":"Carrat","unit":"ct","weights": 0.005
         }
+
     ],
     "temperature":[
         {"name":"Kelvin","unit":"K","weights": 1
@@ -40,6 +51,31 @@
 
         },
         {"name":"Celsius","unit":"°C","weights": -0.00367444424
+        }
+    ],
+    "time":[
+        {"name":"Second","unit":"s","weights": 1
+        },
+        {"name":"Milisecond","unit":"ms","weights": 0.001
+
+        },
+        {"name":"Microsecond","unit":"us","weights": 0.000001
+        },
+        {"name":"Nanosecond","unit":"ns","weights": 0.000000001
+        },
+        {"name":"Picosecond","unit":"ps","weights": 0.000000000001
+        },
+        {"name":"Minute","unit":"min","weights": 59.99999988
+        },
+        {"name":"Hour","unit":"h","weights": 3599.999712
+        },
+        {"name":"Day","unit":"d","weights": 86399.80646
+        },
+        {"name":"Week","unit":"week","weights": 604814.322
+        },
+        {"name":"Month","unit":"month","weights":2629800
+        },
+        {"name":"Year","unit":"year","weights":315576000
         }
     ]
 }
