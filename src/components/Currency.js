@@ -20,20 +20,19 @@ const format =(e)=>{
   var toCurrencyUnit = null
 function CurrencyTable(){
     return(
-      <div className="d-flex c_details" >  
-        <div className="currencyTable">
-             <div></div>           
-        <h2>Course details</h2>
-            <span className="muted"></span>
+        <div className="c_details d-flex-row" >  
+            <div className="currencyTable">
+                    <div></div>           
+            </div>
+            <div className="chart">
+                <h2>Course details</h2>
+                <span className="muted"></span>
+                <canvas id="myChart">
+                    <h2>Select two Currencies to see the trends </h2>
+                </canvas>  
+            </div> 
         </div>
-        <div className="details d-flex-row" >
-        <div className="chart">
-           <canvas id="myChart">
-               <h2>Select two Currencies to see the trends </h2>
-         </canvas>  
-        </div> 
-        </div>
-        </div>
+        
     )
 }
 function historyChart(){
@@ -106,7 +105,7 @@ function Currency (){
             document.querySelector('.currencyTable>div').innerHTML= `<div> <h2>${fromCurrencyUnit}/${toCurrencyUnit} Conversion </h2> <span class="muted">${fromCurrencyUnit}/ ${toCurrencyUnit} in the last 24 hours</span><br/><br/>
             Selling 1 ${fromCurrencyUnit} <span>&rarr;</span>  ${format(fromCurrency/toCurrency)} ${toCurrencyUnit} </div>
             <div>Buying 1 ${fromCurrencyUnit} <span>&rarr;</span> ${format(fromCurrency/toCurrency)} ${toCurrencyUnit} </div> <br/><br/>`  
-            document.querySelector('.currencyTable>span').innerHTML=`${fromCurrencyUnit}/ ${toCurrencyUnit} in the last 24 hours` 
+            document.querySelector('.chart>span').innerHTML=`${fromCurrencyUnit}/ ${toCurrencyUnit} in the last 24 hours` 
             historyChart()       
 
         }
