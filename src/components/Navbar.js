@@ -34,7 +34,7 @@ function Navbar() {
                 document.getElementById('sideNav').classList.add('nav-active')
             }}></button>
             <h1><a href="/" >
-             Unit Convetor </a>
+             Unit Convertor </a>
             </h1>   
     </div>
     )

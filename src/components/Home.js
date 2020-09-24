@@ -17,8 +17,9 @@ const titles = {'length':'measure length',
                 'temperature':'measure temperature'}
                 
 
-const tabClick =(ele) =>{
+export const tabClick =(ele) =>{
     var tablinks = document.getElementsByClassName("tablinks");
+    document.getElementById('title').innerHTML=`${ele.id} Conversion`
     var i = 0
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace('active', '');
@@ -91,6 +92,7 @@ function Home({match}) {
             var ele = document.getElementById(match.params.name)
             tabClick(ele)
             document.querySelector('title').innerHTML = titles[match.params.name]
+            document.getElementById('title').innerHTML=`${activeMetic} Conversion`
            }}
     })       
     
@@ -104,11 +106,11 @@ function Home({match}) {
                </div>
                <div className="home__conversionTop">
                     <div>
-                         <label>Value:</label>
+                         <h5>Value:</h5>
                          <Input placeHolder="milimitre" items={convesionUnits} fieldName="from" callback={inputChangedHandler} value={1}/>
                     </div>
                     <div>
-                        <label>From:</label>
+                        <h5>From:</h5>
                         <Dropdown items={convesionUnits} fieldName="from" callback={inputChangedHandler}/>
                     </div>
                     
@@ -116,11 +118,11 @@ function Home({match}) {
 
               <div  className="home__conversionBottom">
                 <div id="toInput">
-                            <label>result:</label>
+                            <h5>Result:</h5>
                             <Input placeHolder="milimitre" items={convesionUnits} fieldName="to" callback={inputChangedHandler} value={1}/>
                         </div>
                         <div>
-                            <label>to:</label>
+                            <h5>To:</h5>
                             <Dropdown items={convesionUnits} fieldName="to" callback={inputChangedHandler}/>
                         </div>
                 </div> 

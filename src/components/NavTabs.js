@@ -1,7 +1,7 @@
 import './NavTabs.css'
 import React from 'react'
 import {useHistory} from 'react-router-dom'
-
+import {tabClick} from './Home'
 
 function NavTabs({callback}) {
     const history = useHistory()
@@ -15,7 +15,8 @@ function NavTabs({callback}) {
             callback(event) }} id='length'>Length</button>
             <button className="tablinks" onClick={(event)=>{history.push('/time')
             callback(event) }} id="time">Time</button>
-            <button className="tablinks" id="currency">Currency</button>
+            <button className="tablinks" id="currency"  onClick={(event)=>{history.push('/currency')
+            tabClick(event.target) }}>Currency</button>
         </div>
     )
 }

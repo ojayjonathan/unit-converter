@@ -43,7 +43,7 @@
     margin-top: 1.5rem;
     padding-bottom: 2rem;
     border-radius: 10px;
-    background: #eeeeee;
+    background: #e7e7e7;
 }
 
 .home__conversionBottom, .home__conversionTop {
@@ -75,6 +75,7 @@ label {
     text-transform: capitalize;
     color:#2A9D8F ;
     font-size: 1.5rem;
+    text-align: center
 }
 .home__commonUnits{
     margin-top: 3rem;

@@ -1,3 +1,13 @@
+
+.conversionSection{
+    min-height: 400px;
+    background-color: #e7e7e7;
+    margin-bottom: 2rem;
+}
+.conversionSection h1{
+    text-align: center;
+    padding: 1rem;
+}
 .flag-select{
     width: 250px;
     border: 2px solid #6C757D;
@@ -45,6 +55,56 @@
 .mt-2{
     margin-top: 2rem !important;
 }
+
+.flag-select__option {
+    white-space: pre-wrap !important;
+}
+.flag-select__options{
+    max-height: 400px !important;
+}
+
+
+
+.flag-select__option.flag-select__option--placeholder {
+    width:unset;}
+
+ .c_details{
+     margin-top: 3rem !important;
+     background-color: white;
+     padding-left: 10px;
+     padding-right: 10px;
+     padding-top: 2rem;
+     border-radius: 10px;
+     padding-bottom: 2rem;
+     margin-right: 10px !important;
+     margin-left: 10px !important;
+ }   
+ .currencyTable{
+     width: 250px;
+     transition: all .2s ease;
+     
+ }   
+ .currencyTable h2{
+     font-size: 1.1rem;
+ }
+
+
+ .details{
+     display: flex;
+ }
+
+.muted-text{
+    color: #b1b1b1;
+}
+.conversionSection p{
+    margin-top: 2rem;
+    padding-left: 20px;
+    padding-left: 20px;
+}
+.chart{
+    max-width: 350px !important;
+    
+}
 @media (max-width:619.98px){
     .d-flex-row{
         flex-direction: column;
@@ -60,16 +120,4 @@
     .conversionSection{
         margin-top:1rem !important;
     }
-    
 }
-.flag-select__option {
-    white-space: pre-wrap !important;
-}
-.flag-select__options{
-    max-height: 400px !important;
-}
-
-
-
-.flag-select__option.flag-select__option--placeholder {
-    width:unset}

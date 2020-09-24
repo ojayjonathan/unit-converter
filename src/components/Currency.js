@@ -6,38 +6,69 @@ import './Currency.css'
 import customLabels from './customLabels1.json' 
 import rates from './rates'
 import currencyObject from './currencyObject'
-
+//import Chart from 'chart.js'
 
 const math = require('mathjs')
-/*const apiCall = ()=>{
-fetch('https://api.exchangeratesapi.io/latest?symbols=KES')
-.then((resp) => resp.json())
-.then((data) =>
-{
-    exchangeRates = data.rates
-    console.log(exchangeRates)
-})
-}
-apiCall()*/
+const Chart = require('chart.js/dist/Chart.bundle')
 const format =(e)=>{
-    return math.format(e,{notation:'fixed',precision:3})
+    return math.format(e,{notation:'fixed',precision:4})
   }
-
-function CurrencyTable({fromCurrencyUnit, toCurrencyUnit, from_rates, to_rates}){
+  var fromCurrency =null
+  var toCurrency =null
+  var inputValue = null
+  var fromCurrencyUnit =null
+  var toCurrencyUnit = null
+function CurrencyTable(){
     return(
-        <div>
-            <h1>currency</h1>
-            {1} {fromCurrencyUnit}= {from_rates/to_rates} {toCurrencyUnit}
+      <div className="d-flex c_details" >  
+        <div className="currencyTable">
+             <div></div>           
+        <h2>Course details</h2>
+            <span className="muted"></span>
+        </div>
+        <div className="details d-flex-row" >
+        <div className="chart">
+           <canvas id="myChart">
+               <h2>Select two Currencies to see the trends </h2>
+         </canvas>  
+        </div> 
+        </div>
         </div>
     )
 }
+function historyChart(){
+var ctx = document.getElementById('myChart');
+new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Sep 3', 'Sep 4', 'Sep 5', 'Sep 6', 'Sep 7'],
+            datasets: [{
+                label: 'Currency trends',
+               // data: [12, 19, 3, 5, 2, 3],
+               data:[{x:0.567, y:0.455},{x:0.7, y:0.5},{x:0.8, y:1.0}, {x:0.7, y:0.5},{x:0.8, y:1.0}],
+               backgroundColor: 'transparent',
+                borderColor: 'orange',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        // Include a dollar sign in the ticks
+                        callback: function(value, index, values) {
+                            if (index===2 || index===4){
+                                return value;
+                            }
+                            
+                        }
+                    }
+            }]
+        }}
+    });
+}
 
-function Currency() {
-    var fromCurrency =null
-    var toCurrency =null
-    var inputValue = null
-    var fromCurrencyUnit =null
-    var toCurrencyUnit = null
+function Currency (){  
     const to = (e)=>{
           toCurrency = rates[e]
           toCurrencyUnit = currencyObject[e]
@@ -57,61 +88,36 @@ function Currency() {
         }
         calculate(e)
         if (e.target.value !== '' && !e.target.value.match(regex)){
-            document.querySelector('.conversionResult').innerHTML = '<span> Please provide valid value <span/>'
+            document.querySelector('input[name="to"]').value = 'Provide valid amount!'
         }
        
     }
     const calculate = (event)=>{
         if (fromCurrency !== null && toCurrency!==null && inputValue!==null){
             var d = format(fromCurrency*inputValue/toCurrency)
-           var result =`<span>Result:</span>${inputValue} ${fromCurrencyUnit}= ${d} ${toCurrencyUnit}`
-            document.querySelector('.conversionResult').innerHTML = result
              document.querySelector('input[name="to"]').value= d
-            
+                 
         }
         else{
             document.querySelector('input[name="to"]').value= ''
-            document.querySelector('.conversionResult').innerHTML = ''
+           
         }
+        if(fromCurrency !== null && toCurrency!==null){
+            document.querySelector('.currencyTable>div').innerHTML= `<div> <h2>${fromCurrencyUnit}/${toCurrencyUnit} Conversion </h2> <span class="muted">${fromCurrencyUnit}/ ${toCurrencyUnit} in the last 24 hours</span><br/><br/>
+            Selling 1 ${fromCurrencyUnit} <span>&rarr;</span>  ${format(fromCurrency/toCurrency)} ${toCurrencyUnit} </div>
+            <div>Buying 1 ${fromCurrencyUnit} <span>&rarr;</span> ${format(fromCurrency/toCurrency)} ${toCurrencyUnit} </div> <br/><br/>`  
+            document.querySelector('.currencyTable>span').innerHTML=`${fromCurrencyUnit}/ ${toCurrencyUnit} in the last 24 hours` 
+            historyChart()       
+
+        }
+       
 
     }
-    /*const selectedCountry = (event) => {
-        const resultElement = document.querySelector('.conversionResult')
-        var inputEle = document.querySelector('input[name="from"]')
-        var outputEle= document.querySelector('input[name="to"]');
-        var inputValue= inputEle.value
-        var regex = /^[0-9.]+$/
-        var from_selected = (document.querySelector('.c_to .flag-select__option__label')).innerText
-        var to_selected = (document.querySelector('.c_to .flag-select__option__label')).innerText
-        var from_rates = exchangeRates[splitText(from_selected)]
-        var to_rates = exchangeRates[splitText(to_selected)]
-        if (inputValue.match(regex)){
-            console.log(exchangeRates['KES'])
-             console.log((document.querySelector('.c_to .flag-select__option__label')).innerText, outputEle)
-             console.log(from_selected, to_selected, from_rates, to_rates)
-               var d = from_rates*inputValue/to_rates
-               if(d>=1000000 || d<=-1000000){   
-                d= math.format(math.number(d),{precision:5})
-                  } 
-               else{
-                d = format(d)}
-               var result = `<span>Result:</span>${inputValue} ${CurrencyMap[from_selected]}= ${d}
-                            ${CurrencyMap[to_selected]}`
-                 resultElement.innerHTML = result
-                 outputEle.value = `${d}`
-              } 
-         else {
-         if (inputValue !==''){
-              resultElement.innerHTML = '<span style="color:red">Provide a valid value</span>'
-              outputEle.value = ''
-              }
-          else{
-              resultElement.innerHTML = ''
-              outputEle.value = ''
-          }}
-         }*/
+  
+
     return (
        <div className="home conversionSection">
+           <h1>Currency Converter</h1>
            <div className="currencyConvertor d-flex-row">
                <div className="d-flex">
                 <h5 className="mt-2">Currency I have:</h5>   
@@ -120,14 +126,14 @@ function Currency() {
                         customLabels={customLabels} 
                         countries={Object.keys(customLabels)}
                         onSelect={from} className="c_from"/>
-                <div className="c_label mt-2">
-                      <h5 >Amount:</h5><span className="muted">Amount you will have</span>     
+                   <div className="c_label mt-2">
+                      <h5 >Amount:</h5><span className="muted">Amount you have</span>     
                 </div>            
                <Input  fieldName="from" callback={setInputValue} />
                </div>
                <div className="d-flex">
                    <h5 className="mt-2" >Currency I  Want:</h5>
-                    <ReactFlagsSelect searchable={true}
+                   <ReactFlagsSelect searchable={true}
                         searchPlaceholder="Search currency name" 
                         customLabels={customLabels} 
                         countries={Object.keys(customLabels)}
@@ -137,16 +143,20 @@ function Currency() {
                     </div>       
                    <Input  fieldName="to"/>
                </div>
-               <div>
-                   <CurrencyTable />
-                   
-               </div>
-               <div className="conversionResult"></div>
+               <CurrencyTable from_rates={0.76} to_rates={0.5} 
+                fromCurrencyUnit={'USD'} 
+                toCurrencyUnit={'KES'} />
+                <div>
+                    <p>
+                    This currency calculator values are not correct. Use them at your own risk
+                    </p>
+                </div>                   
            </div>
+        
           
         </div>
-    )
-}
+    )}
+
 
 
 export default Currency
