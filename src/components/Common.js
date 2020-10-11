@@ -71,7 +71,7 @@ function Common({item1, item2}) {
           }}
          
     }
-    //useEffect(() =>setInputWidth())    
+       
     return (
         <div className="home">
             <h1>Convert <span>{ item1['name'] } to { item2['name'] }</span></h1>
@@ -91,7 +91,7 @@ function Common({item1, item2}) {
                 <span className="lowercase"> {item2['name']} </span>
               </div>
           </div>
-          <div>
+          <div className="px-2">
             <h1 className="pt-2">Conversion Metrics</h1>
              <p className="pt-2">
                1 {item1['name']} = {format(item1['weights']/item2['weights'])} {item2['name']} <br/>

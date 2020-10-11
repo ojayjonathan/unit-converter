@@ -147,7 +147,7 @@ function Currency (){
                 toCurrencyUnit={'KES'} />
                 <div>
                     <p>
-                    This currency calculator values are not correct. Use them at your own risk
+                    This currency calculator rates are not correct. Please don't use them
                     </p>
                 </div>                   
            </div>
