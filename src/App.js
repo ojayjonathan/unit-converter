@@ -7,6 +7,7 @@ import conversions from './components/conversions'
 import Metrics from './components/Metrics'
 import {NavToggle} from './components/Navbar'
 import Currency from './components/Currency'
+import SiteMap from './components/SiteMap'
 
 function App() {
     return ( <div className = "App" >
@@ -15,6 +16,7 @@ function App() {
           <Navbar />
           <NavToggle />
             <Switch>
+            <Route path='/sitemap' render={SiteMap}  />
                 {
                   Object.keys(conversions).map((key)=>
                     <Route path={`/${key}/:slug`} key={key} render={({match})=><Metrics match={match} metric={key}/>} />         

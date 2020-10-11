@@ -30,7 +30,7 @@
         },
         {"name":"Gram","unit":"g","weights": 0.001
         },
-        {"name":"Once","unit":"oz","weights": 0.0283495
+        {"name":"Ounce","unit":"oz","weights": 0.0283495
         },
         {"name":"Pound","unit":"lb","weights": 0.453592
         },

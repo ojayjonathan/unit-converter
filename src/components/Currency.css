@@ -122,3 +122,8 @@
         margin-top:1rem !important;
     }
 }
+@media (min-width:620px){
+    .c_details{
+        width:520px;
+    }
+}
