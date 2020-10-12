@@ -41,6 +41,20 @@ function SiteMap() {
 
 
                     )}
+                    <ul>
+                <li className="list-header">Table of Content</li>        
+                <li><a href="/Weight">Weight</a></li>
+
+                <li><a href="/length">length</a></li>
+
+                <li><a href="/temperature">Temperature</a></li>
+
+                <li><a href="/time">Time</a></li>
+
+                <li><a href="/currency">Currency</a></li>
+                <li><a href="/sitemap">sitemap</a></li>
+
+            </ul>
                 </div>
             </div>
         </div>

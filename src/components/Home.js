@@ -4,18 +4,19 @@ import { Input, Dropdown } from './Utils'
 import Navtabs from './NavTabs'
 import conversions from './conversions'
 import { Link } from "react-router-dom"
+import {setHeader} from './Common'
 
-
-const format =(d)=>{          
-    d=(d).toPrecision(10)
+const format = (d) => {
+    d = (d).toPrecision(10)
     d = Number(d)
-    if (d>=1_000_000 | d<=0.0000001){
-      d=(d).toPrecision(7)
-    }    
-    else{
-      d =d.toPrecision()
+    if (d >= 1_000_000 | d <= 0.0000001) {
+        d = (d).toPrecision(7)
     }
-return d }
+    else {
+        d = d.toPrecision()
+    }
+    return d
+}
 const commonLenCon = [{ 'name': 'cm to inches', 'slug': 'cm-in' }, { 'name': 'km to miles', 'slug': 'km-mi' }, { 'name': 'Feet to Metres', 'slug': 'ft-m' },
 { 'name': 'feet to cm', 'slug': 'ft-cm' }
 ]
@@ -23,18 +24,41 @@ const commonWeightCon = [{ 'name': 'grams to ounces', 'slug': 'g-oz' }, { 'name'
 { 'name': 'ounces to pounds', 'slug': 'oz-lb' }, { 'name': 'lbs to kg', 'slug': 'lb-kg' }
 ]
 const metrics = ['length', 'weight', 'time', 'temperature']
-const titles = {
-    'length': 'measure length',
-    'weight': 'measure weight',
-    'time': '',
-    'temperature': 'measure temperature'
+const headerContent = {
+    'length': {
+        'description': 'Free online length converter - converts between 93 units of length, including meter , kilometer, decimeter, centimeter ,mile ,foot, and more.Explore many other unit converters or learn more about length unit conversions.',
+        'title': 'Length Conversion',
+        'keywords': 'Length Converter, Length Conversion, Convert Length, Online Length Converter'
+    },
+    'weight': {
+        'description': 'Free online weight and mass converter - converts between units of weight and mass, including kilogram [kg], gram [g], milligram [mg], ton (metric) [t], etc. Also, explore many other unit converters or learn more about weight and mass unit conversions eith examples.',
+        'title': 'Weight and mass Conversion',
+        'keywords': 'Weight and Mass Converter, Weight and Mass Conversion, Convert Weight and Mass, Online Weight and Mass Converter'
+    },
+    'time': {
+        'description': 'Free online time converter - converts between difference units of time, including second [s], millisecond [ms], minute [min], hour [h], etc. Also, explore many other unit converters or learn more about time unit conversions.',
+        'title': 'Time Conversion',
+        'keywords': 'Time Converter, Time Conversion, Convert Time, Online Time Converter'
+    },
+    'temperature': {
+        'description': 'Free online temperature converter - converts between 3 units of temperature, including kelvin [K], Celsius [°C], Fahrenheit [°F], etc. Also, explore many other unit converters or learn more about temperature unit conversions.',
+        'title': 'Temperature Conversion',
+        'keywords': 'Temperature Converter, Temperature Conversion, Convert Temperature, Online Temperature Converter, '
+    },
+    'currency': {
+        'description': 'Calculate live currency and foreign exchange rates with this free currency converter.',
+        'title': 'Currency Conversion',
+        'keywords': 'Currency Converter, Currency Conversion, Convert Currency, Online Currency Converter, '
+    }
 }
 
 const commonTempCon = [{ 'name': 'celcius to kelvin', 'slug': '°C-K' }, { 'name': 'kelvin to celcius', 'slug': 'K-°C' }, { 'name': 'Fahrenheit to Celsius', 'slug': '°F-°C' }
 ]
 export const tabClick = (ele) => {
     var tablinks = document.getElementsByClassName("tablinks");
-    document.getElementById('title').innerHTML = `${ele.id} Conversion`
+    var m = headerContent[ele.id]
+     setHeader(m.title, m.description, m.keywords)
+    
     var i = 0
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace('active', '');
@@ -50,7 +74,8 @@ function Home({ match }) {
             activeMetic = match.params.name
         }
     }
-    document.querySelector('title').innerHTML = titles[activeMetic]
+    var m = headerContent[activeMetic]
+    setHeader(m.title, m.description, m.keywords)
     const [convesionUnits, setConversionUnits] = useState(conversions[activeMetic])
     const inputChangedHandler = (event) => {
         const resultElement = document.querySelector('.conversionResult')
@@ -110,7 +135,6 @@ function Home({ match }) {
             if (metrics.includes(match.params.name) === true) {
                 var ele = document.getElementById(match.params.name)
                 tabClick(ele)
-                document.querySelector('title').innerHTML = titles[match.params.name]
                 document.getElementById('title').innerHTML = `${activeMetic} Conversion`
             }
         }
