@@ -2,21 +2,16 @@ import React from 'react'
 import './Common.css'
 import { Input} from "./Utils"
 
-const math = require ('mathjs')
-const format =(e)=>{
-  return math.format(e,{notation:'fixed',precision:3})
-}
-/*const setInputWidth= ()=>{
-  var lengths= []
-  var inputs = document.querySelectorAll('.input')
-  var i = 0
-  for (i = 0; i < inputs.length; i++) {
-     lengths.push(inputs[i].offsetWidth)
- }
-  for (i = 0; i < inputs.length; i++) {
-    inputs[i].setAttribute("style",`width:${Math.min(...lengths)}px !important`)
-}
-}*/
+const format =(d)=>{          
+          d=(d).toPrecision(10)
+          d = Number(d)
+          if (d>=1_000_000 | d<=0.0000001){
+            d=(d).toPrecision(5)
+          }    
+          else{
+            d =d.toPrecision()
+          }
+  return d }
 
 function Common({item1, item2}) {
     const inputChangedHandler = (event) => {
@@ -28,12 +23,7 @@ function Common({item1, item2}) {
         if (inputValue.match(regex)){
             var fromweights =item1['weights'] 
             var toweights = item2['weights']   
-               var d = fromweights*inputValue/toweights 
-               if(d>=1000000 || d<=-1000000){   
-                d= math.format(math.number(d),{precision:5})
-                  } 
-               else{
-                d = format(d)}
+               var d = format(fromweights*inputValue/toweights)
                if (event.target.name==="from"){
                 var result = `<span>Result:</span> ${inputValue} ${item1['name']} = ${d} ${item2['name']}`
                  if (event.target.value === ""){

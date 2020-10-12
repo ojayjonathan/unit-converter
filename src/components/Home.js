@@ -6,7 +6,16 @@ import conversions from './conversions'
 import { Link } from "react-router-dom"
 
 
-const math = require('mathjs')
+const format =(d)=>{          
+    d=(d).toPrecision(10)
+    d = Number(d)
+    if (d>=1_000_000 | d<=0.0000001){
+      d=(d).toPrecision(7)
+    }    
+    else{
+      d =d.toPrecision()
+    }
+return d }
 const commonLenCon = [{ 'name': 'cm to inches', 'slug': 'cm-in' }, { 'name': 'km to miles', 'slug': 'km-mi' }, { 'name': 'Feet to Metres', 'slug': 'ft-m' },
 { 'name': 'feet to cm', 'slug': 'ft-cm' }
 ]
@@ -61,14 +70,14 @@ function Home({ match }) {
             }))['weights']
             var d = fromweights * inputValue / toweights
             if (d >= 1000000 || d <= -1000000) {
-                d = math.format(math.number(d), { precision: 5 })
+                d = format(d)
             }
             else {
-                d = math.format(d, { notation: 'auto', precision: 5 })
+                d = format(d)
             }
 
             var result = `<span>Result:</span> ${inputValue} ${fromUnit} = ${d} ${toUnit}`
-            var convMetric = `1 ${fromUnit} = ${math.format(fromweights / toweights, { precision: 4 })} ${toUnit}`
+            var convMetric = `1 ${fromUnit} = ${format(fromweights / toweights)} ${toUnit}`
             document.getElementById('convMetric').innerHTML = convMetric
 
             resultElement.innerHTML = result

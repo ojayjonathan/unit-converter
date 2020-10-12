@@ -16,6 +16,12 @@ function MapLinks({ metric, obj }) {
             <Link to={`${metric}/${obj[1]['unit']}-${obj[0]['unit']}`} >
                 <span style={{ 'fontSize': '1.5rem' }}>&rsaquo;</span>{obj[1]['name']} to {obj[0]['name']} 
             </Link>
+            <Link to={`${metric}/${obj[0]['unit']}-${obj[1]['unit']}`} >
+                <span style={{ 'fontSize': '1.5rem' }}>&rsaquo;</span> {obj[0]['unit']} to {obj[1]['unit']}
+            </Link> 
+            <Link to={`${metric}/${obj[1]['unit']}-${obj[0]['unit']}`} >
+                <span style={{ 'fontSize': '1.5rem' }}>&rsaquo;</span>{obj[1]['unit']} to {obj[0]['unit']} 
+            </Link>
         </li>
 
     )
